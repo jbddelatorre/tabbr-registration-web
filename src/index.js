@@ -13,7 +13,10 @@ import * as serviceWorker from './serviceWorker';
 const theme = createMuiTheme({
 	palette: {
 		primary: blue,
-	}
+	},
+	typography: {
+	    useNextVariants: true,
+	},
 });
 
 ReactDOM.render(
