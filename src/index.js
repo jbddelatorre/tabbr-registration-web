@@ -1,9 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Container from './containers';
+
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+
+import { BrowserRouter as Router } from 'react-router-dom';
+
+import blue from '@material-ui/core/colors/blue';
+
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<Container />
+const theme = createMuiTheme({
+	palette: {
+		primary: blue,
+	}
+});
+
+ReactDOM.render(
+	<MuiThemeProvider theme={theme}>
+		<Router>
+			<Container />
+		</Router>
+	</MuiThemeProvider>
 	, 
 	document.getElementById('root'));
 
