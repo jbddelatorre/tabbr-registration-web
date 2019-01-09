@@ -62,7 +62,6 @@ export default withStyles(styles)(class Registration extends Component {
 				this.setState({state})
 			}
 		}
-		
 		if(valid) {
 			console.log('success')
 		}
