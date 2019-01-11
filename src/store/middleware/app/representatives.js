@@ -1,5 +1,5 @@
-import { REPRESENTATIVES, POST_REPRESENTATIVE, setRepresentative } from '../../../actions/representative';
-import { API_SUCCESS, apiRequest } from '../../../actions/api';
+import { REPRESENTATIVES, POST_REPRESENTATIVE, setRepresentative, errorRepresentative } from '../../../actions/representative';
+import { API_SUCCESS, API_ERROR, apiRequest } from '../../../actions/api';
 
 export const representativeMiddleware = ({ dispatch }) => next => action => {
 
@@ -10,7 +10,11 @@ export const representativeMiddleware = ({ dispatch }) => next => action => {
 		case `${REPRESENTATIVES} ${API_SUCCESS}`:
 			dispatch(setRepresentative(action.payload)) 
 			break;
+		case `${REPRESENTATIVES} ${API_ERROR}`:
+			dispatch(errorRepresentative(action.payload)) 
+			break;
 		default:
+			
 			break
 	}
 

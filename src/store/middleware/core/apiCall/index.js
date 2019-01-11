@@ -10,7 +10,7 @@ export const apiMiddleware = ({ dispatch }) => next => async action => {
 			dispatch(apiSuccess(response, entity));
 		}
 		catch(err) {
-			dispatch(apiError(err, entity))
+			dispatch(apiError(err.response, entity))
 		}
 	}
 
