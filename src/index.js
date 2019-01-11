@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import Container from './containers';
 import { Provider } from 'react-redux';
 import store from './store';
+import axios from 'axios';
+import { apiBaseUrl } from './config';
 
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
@@ -21,14 +23,18 @@ const theme = createMuiTheme({
 	},
 });
 
+axios.defaults.baseURL = apiBaseUrl;
+//axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
+axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+
 ReactDOM.render(
-	<Provider store={store}>
-		<MuiThemeProvider theme={theme}>
-			<Router>
-				<Container />
-			</Router>	
-		</MuiThemeProvider>
-	</Provider>
+	<MuiThemeProvider theme={theme}>
+		<Provider store={store}>
+				<Router>
+					<Container />
+				</Router>	
+		</Provider>
+	</MuiThemeProvider>
 	, 
 	document.getElementById('root'));
 
