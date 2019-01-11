@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import Validator from 'validator';
 import isEmpty from '../../validation/isEmpty';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import Register from './Register';
@@ -15,19 +15,19 @@ import Success from './Success';
 
 // import Grid from '@material-ui/core/Grid';
 
-const styles = theme => ({
-  root: {
-    padding: theme.spacing.unit * 4,
-  },
-  button: {
-  	marginTop: theme.spacing.unit * 4
-  }
-});
+// const styles = theme => ({
+//   root: {
+//     padding: theme.spacing.unit * 4,
+//   },
+//   button: {
+//   	marginTop: theme.spacing.unit * 4
+//   }
+// });
 
 class Registration extends Component {
 
 	render() {
-		const { classes, data } = this.props;
+		const { data } = this.props;
 
 		return isEmpty(data) ? 
 			<Register /> : 

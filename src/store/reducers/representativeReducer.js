@@ -1,17 +1,15 @@
 import { combineReducers } from 'redux'
 import { 
-	REPRESENTATIVE_REQUEST, 
-	REPRESENTATIVE_SUCCESS, 
-	REPRESENTATIVE_ERROR, 
-} from '../actions/types';
+	POST_REPRESENTATIVE,
+	SET_REPRESENTATIVE, 
+} from '../../actions/representative';
 
 
 const isFetching = (state = false, action) => {
 	switch(action.type) {
-		case REPRESENTATIVE_REQUEST:
+		case POST_REPRESENTATIVE:
 			return true
-		case REPRESENTATIVE_SUCCESS:
-		case REPRESENTATIVE_ERROR:
+		case SET_REPRESENTATIVE:
 			return false
 		default:
 			return state
@@ -20,10 +18,7 @@ const isFetching = (state = false, action) => {
 
 const data = (state = {}, action) => {
 	switch(action.type) {
-		case REPRESENTATIVE_REQUEST:
-		case REPRESENTATIVE_ERROR:
-			return {}
-		case REPRESENTATIVE_SUCCESS:
+		case SET_REPRESENTATIVE:
 			return action.payload
 		default:
 			return state
