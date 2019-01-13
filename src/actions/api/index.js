@@ -19,7 +19,7 @@ export const apiRequest = (body, method, entity, url) => ({
 export const apiSuccess = (response, entity) => ({
 	type: `${entity} ${API_SUCCESS}`,
 	payload: {
-		data: response,
+		data: response.data,
 		meta: { entity }
 	} 
 })
@@ -27,7 +27,7 @@ export const apiSuccess = (response, entity) => ({
 export const apiError = (error, entity) => ({
 	type: `${entity} ${API_ERROR}`,
 	payload: {
-		data: error,
+		data: error.response.data,
 		meta: { entity }
 	} 
 })

@@ -31,6 +31,8 @@ const error = (state = {}, action) => {
 	switch(action.type) {
 		case ERROR_REGISTRATION:
 			return action.payload
+		case SET_REGISTRATION:
+			return {}
 		default:
 			return state
 	}

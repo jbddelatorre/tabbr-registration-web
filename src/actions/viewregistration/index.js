@@ -5,7 +5,6 @@ export const SET_VIEWREGISTRATION = `${VIEWREGISTRATION} Set`;
 export const ERROR_VIEWREGISTRATION = `${VIEWREGISTRATION} Error`;
 
 export const requestViewRegistration = (userData) => {
-	console.log(FETCH_VIEWREGISTRATION)
 	return {
 		type: FETCH_VIEWREGISTRATION,
 		payload: userData

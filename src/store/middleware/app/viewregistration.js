@@ -12,7 +12,7 @@ export const viewregistrationMiddleware = ({ dispatch }) => next => action => {
 
 	switch(action.type) {
 		case FETCH_VIEWREGISTRATION:
-			dispatch(apiRequest(action.payload, "get", VIEWREGISTRATION, "/viewregistration"))
+			dispatch(apiRequest(action.payload, "post", VIEWREGISTRATION, "/api/viewregistration"))
 			break
 		case `${VIEWREGISTRATION} ${API_SUCCESS}`:
 			dispatch(successViewRegistration(action.payload))

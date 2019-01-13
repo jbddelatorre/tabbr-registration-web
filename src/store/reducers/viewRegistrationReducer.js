@@ -31,6 +31,8 @@ const error = (state = {}, action) => {
 	switch(action.type) {
 		case ERROR_VIEWREGISTRATION:
 			return action.payload
+		case SET_VIEWREGISTRATION:
+			return {}
 		default:
 			return state
 	}
