@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 
 //import { registerRepresentative } from '../../../actions/representativeActions';
 
-import { registerRepresentative } from '../../../actions/representative';
+import { registerRepresentative } from '../../../actions/registration';
 
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -24,7 +24,7 @@ const styles = theme => ({
   }
 });
 
-class Registration extends Component {
+class Register extends Component {
 	state = {
 		institution: '',
 		representative: '',
@@ -68,11 +68,11 @@ class Registration extends Component {
 				s.error[key] = true;
 				this.setState({s})
 			}
-			// if(!Validator.isEmail(s.email)) {
-			// 	valid = false;
-			// 	s.error.email = true;
-			// 	this.setState({s})
-			// }
+			if(!Validator.isEmail(s.email)) {
+				valid = false;
+				s.error.email = true;
+				this.setState({s})
+			}
 		}
 		if(valid) {
 			delete s.error
@@ -217,11 +217,11 @@ class Registration extends Component {
 	}
 }
 
-Registration.propTypes = {
+Register.propTypes = {
 	registerRepresentative: PropTypes.func.isRequired,
 };
 
-export default connect(null, { registerRepresentative })(withStyles(styles)(Registration))
+export default connect(null, { registerRepresentative })(withStyles(styles)(Register))
 
 
 

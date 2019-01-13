@@ -1,28 +1,12 @@
 import React, { Component } from 'react';
 // import Validator from 'validator';
 import isEmpty from '../../validation/isEmpty';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import Register from './Register';
 import Success from './Success';
-// import { registerRepresentative } from '../../actions/representativeActions';
 
-// import { withStyles } from '@material-ui/core/styles';
-// import Typography from '@material-ui/core/Typography';
-// import TextField from '@material-ui/core/TextField';
-// import Button from '@material-ui/core/Button';
-
-// import Grid from '@material-ui/core/Grid';
-
-// const styles = theme => ({
-//   root: {
-//     padding: theme.spacing.unit * 4,
-//   },
-//   button: {
-//   	marginTop: theme.spacing.unit * 4
-//   }
-// });
 
 class Registration extends Component {
 
@@ -37,8 +21,12 @@ class Registration extends Component {
 
 const mapStateToProps = (state) => {
 	return {
-		data: state.representative.data
+		data: state.registration.data
 	}
+}
+
+Registration.propTypes = {
+	data: PropTypes.object.isRequired
 }
 
 export default connect(mapStateToProps)(Registration)

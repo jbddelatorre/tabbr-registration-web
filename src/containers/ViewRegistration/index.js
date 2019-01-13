@@ -1,7 +1,32 @@
-import React from 'react';
+import React, { Component } from 'react';
+// import Validator from 'validator';
+import isEmpty from '../../validation/isEmpty';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
-export default () => {
-	return (
-		<h2>VIEW REGISTRATION</h2>
-	)
-};
+import Result from './Result';
+import Search from './Search';
+
+
+class ViewRegistration extends Component {
+
+	render() {
+		const { data } = this.props;
+
+		return isEmpty(data) ? 
+			<Search /> : 
+			<Result data = {data} />
+	}	
+}
+
+const mapStateToProps = (state) => {
+	return {
+		data: state.representative.data
+	}
+}
+
+ViewRegistration.propTypes = {
+	data: PropTypes.object.isRequired
+}
+
+export default connect()(ViewRegistration)

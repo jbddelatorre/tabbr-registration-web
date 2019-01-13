@@ -38,6 +38,9 @@ export default withStyles(styles)((props) => {
 							<Typography variant="h6" gutterBottom>
 					        	{ data.institution }
 					    	</Typography>
+					    	<Typography variant="h6" gutterBottom>
+					        	{ data.registration_code }
+					    	</Typography>
 						</Grid>
 					</Grid>
 				</Grid>

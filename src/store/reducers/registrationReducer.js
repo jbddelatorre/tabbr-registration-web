@@ -1,17 +1,17 @@
 import { combineReducers } from 'redux'
 import { 
-	POST_REPRESENTATIVE,
-	SET_REPRESENTATIVE,
-	ERROR_REPRESENTATIVE
-} from '../../actions/representative';
+	POST_REGISTRATION,
+	SET_REGISTRATION,
+	ERROR_REGISTRATION
+} from '../../actions/registration';
 
 
 const isFetching = (state = false, action) => {
 	switch(action.type) {
-		case POST_REPRESENTATIVE:
+		case POST_REGISTRATION:
 			return true
-		case SET_REPRESENTATIVE:
-		case ERROR_REPRESENTATIVE:
+		case SET_REGISTRATION:
+		case ERROR_REGISTRATION:
 			return false
 		default:
 			return state
@@ -20,7 +20,7 @@ const isFetching = (state = false, action) => {
 
 const data = (state = {}, action) => {
 	switch(action.type) {
-		case SET_REPRESENTATIVE:
+		case SET_REGISTRATION:
 			return action.payload
 		default:
 			return state
@@ -29,7 +29,7 @@ const data = (state = {}, action) => {
 
 const error = (state = {}, action) => {
 	switch(action.type) {
-		case ERROR_REPRESENTATIVE:
+		case ERROR_REGISTRATION:
 			return action.payload
 		default:
 			return state

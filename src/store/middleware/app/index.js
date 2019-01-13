@@ -1,5 +1,5 @@
-import { representativeMiddleware } from './representatives';
+import { registrationMiddleware } from './registration';
 
 export const appMiddleware = [
-	representativeMiddleware
+	registrationMiddleware
 ];
