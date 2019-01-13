@@ -1,17 +1,17 @@
 import { combineReducers } from 'redux'
 import { 
-	POST_REGISTRATION,
-	SET_REGISTRATION,
-	ERROR_REGISTRATION
-} from '../../actions/registration';
+	FETCH_VIEWREGISTRATION,
+	SET_VIEWREGISTRATION,
+	ERROR_VIEWREGISTRATION
+} from '../../actions/viewregistration';
 
 
 const isFetching = (state = false, action) => {
 	switch(action.type) {
-		case POST_REGISTRATION:
+		case FETCH_VIEWREGISTRATION:
 			return true
-		case SET_REGISTRATION:
-		case ERROR_REGISTRATION:
+		case SET_VIEWREGISTRATION:
+		case ERROR_VIEWREGISTRATION:
 			return false
 		default:
 			return state
@@ -20,7 +20,7 @@ const isFetching = (state = false, action) => {
 
 const data = (state = {}, action) => {
 	switch(action.type) {
-		case SET_REGISTRATION:
+		case SET_VIEWREGISTRATION:
 			return action.payload
 		default:
 			return state
@@ -29,7 +29,7 @@ const data = (state = {}, action) => {
 
 const error = (state = {}, action) => {
 	switch(action.type) {
-		case ERROR_REGISTRATION:
+		case ERROR_VIEWREGISTRATION:
 			return action.payload
 		default:
 			return state

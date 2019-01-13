@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
+import Validator from 'validator';
+
+import { requestViewRegistration } from '../../../actions/viewregistration'
 
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
@@ -24,7 +27,11 @@ class ViewRegistration extends Component {
 		super(props);
 		this.state = {
 			registration_code: "",
-			email: ""
+			email: "",
+			error: {
+				registration_code: false,
+				email: false
+			}
 		}
 	}
 
@@ -32,9 +39,31 @@ class ViewRegistration extends Component {
 		this.setState({ [field]: e.target.value })
 	}
 
+	handleSubmit = () => {
+		const state = { ...this.state }
+		let valid = true;
+
+		if(state.registration_code.length !== 6) {
+			state.error.registration_code = "This is not a valid registration code."
+			valid = false;
+		}
+
+		if(!Validator.isEmail(state.email)) {
+			state.error.email = "This is not a valid email."
+			valid = false;
+		}
+
+		if(valid) {
+			delete state.error
+			this.props.requestViewRegistration(state)
+		} else {
+			this.setState({state})
+		}
+	}
+
 	render() {
 		const { classes } = this.props
-		const { registration_code, email } = this.state
+		const { registration_code, email, error } = this.state
 
 		return (
 			<div className={classes.root}>
@@ -47,10 +76,12 @@ class ViewRegistration extends Component {
 						</Grid>		
 						<Grid item xs={12} md={8}>
 							<TextField
+							  required
+							  error={!!error.registration_code}
 					          label="Registration Code"
 					          value={registration_code}
 					          className={classes.textField}
-					          helperText="Enter registration code"
+					          helperText={error.registration_code ? error.registration_code : "Enter Registration Code"}
 					          margin="normal"
 					          variant="outlined"
 					          fullWidth
@@ -64,10 +95,12 @@ class ViewRegistration extends Component {
 						</Grid>		
 						<Grid item xs={12} md={8}>
 							<TextField
+							  required
+							  error={!!error.email}
 					          label="Email"
-					          defaultValue={email}
+					          value={email}
 					          className={classes.textField}
-					          helperText="Enter Email Address"
+					          helperText={error.email ? error.email: "Enter Email Address"}
 					          margin="normal"
 					          variant="outlined"
 					          fullWidth
@@ -80,7 +113,7 @@ class ViewRegistration extends Component {
 						<Button
 							className={classes.button}
 							variant="contained"
-							onClick={() => console.log('clicked')}
+							onClick={this.handleSubmit}
 							color="primary"
 						>
 						Find Registration
@@ -92,4 +125,8 @@ class ViewRegistration extends Component {
 	}
 }
 
-export default connect()(withStyles(styles)(ViewRegistration))
+ViewRegistration.propTypes = {
+	requestViewRegistration: PropTypes.func.isRequired,
+}
+
+export default connect(null, { requestViewRegistration })(withStyles(styles)(ViewRegistration))

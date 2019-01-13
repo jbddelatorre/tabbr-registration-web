@@ -11,7 +11,7 @@ import Search from './Search';
 class ViewRegistration extends Component {
 
 	render() {
-		const { data } = this.props;
+		const data  = this.props.data || {};
 
 		return isEmpty(data) ? 
 			<Search /> : 
@@ -25,8 +25,8 @@ const mapStateToProps = (state) => {
 	}
 }
 
-ViewRegistration.propTypes = {
-	data: PropTypes.object.isRequired
-}
+// ViewRegistration.propTypes = {
+// 	data: PropTypes.object.isRequired
+// }
 
 export default connect()(ViewRegistration)

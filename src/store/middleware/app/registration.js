@@ -2,7 +2,7 @@ import { REGISTRATIONS, POST_REGISTRATION, setRegistration, errorRegistration } 
 import { API_SUCCESS, API_ERROR, apiRequest } from '../../../actions/api';
 
 export const registrationMiddleware = ({ dispatch }) => next => action => {
-
+	next(action);
 	switch(action.type) {
 		case POST_REGISTRATION:
 			dispatch(apiRequest(action.payload, 'post', REGISTRATIONS, '/api/registration/register')) 
@@ -17,5 +17,4 @@ export const registrationMiddleware = ({ dispatch }) => next => action => {
 			break
 	}
 
-	next(action);
 }

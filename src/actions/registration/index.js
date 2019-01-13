@@ -11,11 +11,11 @@ export const registerRepresentative = (userData) => ({
 
 export const setRegistration = ({ data }) => ({
 	type: SET_REGISTRATION,
-	payload: data.data
+	payload: data.data || {}
 })
 
 export const errorRegistration = ({ data }) => ({
 	type: ERROR_REGISTRATION,
-	payload: data.data
+	payload: data || {}
 })
 
