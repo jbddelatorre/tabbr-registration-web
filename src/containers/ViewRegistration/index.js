@@ -13,15 +13,9 @@ import LinearProgress from '@material-ui/core/LinearProgress';
 class ViewRegistration extends Component {
 	render() {
 		const data  = this.props.data || {};
-		const { isFetching } = this.props
-		console.log('hello')
-
 
 		return (
-			<Fragment>
-				{isFetching ? <LinearProgress variant="query" color="secondary" /> : null}
-				{isEmpty(data) ? <Search /> : <Result data = {data} />}
-			</Fragment>
+			isEmpty(data) ? <Search /> : <Result data = {data} />
 		)
 		
 	}	

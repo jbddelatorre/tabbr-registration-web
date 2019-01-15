@@ -68,11 +68,11 @@ class Register extends Component {
 				s.error[key] = true;
 				this.setState({s})
 			}
-			// if(!Validator.isEmail(s.email)) {
-			// 	valid = false;
-			// 	s.error.email = true;
-			// 	this.setState({s})
-			// }
+			if(!Validator.isEmail(s.email)) {
+				valid = false;
+				s.error.email = true;
+				this.setState({s})
+			}
 		}
 		if(valid) {
 			delete s.error

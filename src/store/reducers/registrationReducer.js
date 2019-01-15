@@ -18,7 +18,20 @@ const isFetching = (state = false, action) => {
 	}
 }
 
-const data = (state = {}, action) => {
+const data = (state = {
+	 "_id": {
+        "$oid": "5c3a70e08e61191c70463ac7"
+    },
+    "institution": "hello",
+    "representative": "hi",
+    "email": "123@123.com",
+    "contact": "123",
+    "num_teams": 2,
+    "num_adj": 4,
+    "num_obs": 3,
+    "registration_code": "5263HG",
+    "__v": 0
+}, action) => {
 	switch(action.type) {
 		case SET_REGISTRATION:
 			return action.payload

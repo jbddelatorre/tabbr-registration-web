@@ -18,9 +18,18 @@ const styles = theme => ({
     padding: theme.spacing.unit * 4,
   },
   button: {
-  	marginTop: theme.spacing.unit * 4
+  	marginTop: theme.spacing.unit * 2
+  },
+  message: {
+  	marginTop: theme.spacing.unit * 2
   }
 });
+
+const clearError = () => {
+	return {
+		type: "CLEAR EERRRROOR"
+	}
+}
 
 class ViewRegistration extends Component {
 	constructor(props) {
@@ -61,8 +70,12 @@ class ViewRegistration extends Component {
 		}
 	}
 
+	componentWillUnmount() {
+		this.props.clearError()
+	}
+
 	render() {
-		const { classes } = this.props
+		const { classes, viewregistration_error } = this.props
 		const { registration_code, email, error } = this.state
 
 		return (
@@ -109,6 +122,14 @@ class ViewRegistration extends Component {
 						</Grid>
 					</Grid>
 					
+					{viewregistration_error.viewregistration ? 
+					<Grid container item xs={12} justify="center" className={classes.message}>
+						<Typography variant="subtitle1" color="secondary" gutterBottom>
+						        Registration not found.
+						</Typography>
+					</Grid> : null
+					}
+
 					<Grid container item xs={12} justify="center">
 						<Button
 							className={classes.button}
@@ -125,8 +146,13 @@ class ViewRegistration extends Component {
 	}
 }
 
+const mapStateToProps = state => ({
+	viewregistration_error: state.viewregistration.error
+})
+
 ViewRegistration.propTypes = {
 	requestViewRegistration: PropTypes.func.isRequired,
+	viewregistration_error: PropTypes.object.isRequired
 }
 
-export default connect(null, { requestViewRegistration })(withStyles(styles)(ViewRegistration))
+export default connect(mapStateToProps, { clearError, requestViewRegistration })(withStyles(styles)(ViewRegistration))
