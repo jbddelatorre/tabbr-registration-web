@@ -67,7 +67,7 @@ class ButtonAppBar extends Component {
           </ResponsiveToolbar>
           
         </AppBar>
-        { this.props.isLoading ? <LinearProgress variant="query" color="secondary" /> : null }
+        { this.props.isLoading ? <LinearProgress variant="query" color="secondary" /> : <LinearProgress variant="query" color="white" /> }
       </Fragment>
     );
   }

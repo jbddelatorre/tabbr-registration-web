@@ -26,7 +26,7 @@ const styles = theme => ({
     }
 });
 
-export default connect(null, { requestChangeRegistration })(withStyles(styles)(class FormDialog extends React.Component {
+class FormDialog extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -52,7 +52,12 @@ export default connect(null, { requestChangeRegistration })(withStyles(styles)(c
     } else if (isNumber && (state.value < 1 || isNaN(state.value) )) {
       console.log('Invalid Input')
     } else {
+      const { email, registration_code } = this.props
+      console.log('here' + email)
+      console.log(registration_code)
       this.props.requestChangeRegistration({ 
+        email,
+        registration_code,
         field: title,
         value: state.value 
       })
@@ -110,4 +115,11 @@ export default connect(null, { requestChangeRegistration })(withStyles(styles)(c
       </div>
     );
   }
-}));
+};
+
+const mapStateToProps = (state) => ({
+  email: state.viewregistration.data.email,
+  registration_code: state.viewregistration.data.registration_code
+})
+
+export default connect(mapStateToProps, { requestChangeRegistration })(withStyles(styles)(FormDialog))
