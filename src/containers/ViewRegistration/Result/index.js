@@ -16,9 +16,10 @@ const styles = theme => ({
   	marginTop: theme.spacing.unit * 4
   },
   link: {
+  	marginTop: theme.spacing.unit * 4,
   	'&:hover': {
   		cursor:'pointer',
-  		textDecoration: 'underline'
+  		textDecoration: 'underline',
   	}
   },
   spacing: {
