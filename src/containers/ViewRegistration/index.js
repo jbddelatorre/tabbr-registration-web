@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 // import Validator from 'validator';
 import isEmpty from '../../validation/isEmpty';
 import PropTypes from 'prop-types';
@@ -7,9 +7,6 @@ import { connect } from 'react-redux';
 import Result from './Result';
 import Search from './Search';
 
-import LinearProgress from '@material-ui/core/LinearProgress';
-
-
 class ViewRegistration extends Component {
 	render() {
 		const data  = this.props.data || {};
@@ -17,7 +14,6 @@ class ViewRegistration extends Component {
 		return (
 			isEmpty(data) ? <Search /> : <Result data = {data} />
 		)
-		
 	}	
 }
 

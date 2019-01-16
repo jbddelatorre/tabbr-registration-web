@@ -11,7 +11,7 @@ import Success from './Success';
 class Registration extends Component {
 
 	render() {
-		const { data, isFetching } = this.props;
+		const { data } = this.props;
 
 		return (
 			isEmpty(data) ? <Register /> : <Success data = {data} />

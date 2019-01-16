@@ -1,23 +1,15 @@
 import React, { Fragment, Component } from 'react';
 import { Link } from 'react-router-dom';
-
 import PropTypes from 'prop-types';
-
-import { withStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-
-import ResponsiveToolbar from '../Container/Toolbar'
-
-import Container from '../Container';
-import NavigationMenu from './NavigationMenu'
-
-import MediaQuery from 'react-responsive';
-
 import { connect } from 'react-redux';
 
+import MediaQuery from 'react-responsive';
+import { withStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import ResponsiveToolbar from '../Container/Toolbar'
+import NavigationMenu from './NavigationMenu'
 import LinearProgress from '@material-ui/core/LinearProgress';
 
 const styles = {
@@ -30,12 +22,6 @@ const styles = {
     marginRight: 6,
     paddingLeft: 6,
     paddingRight: 6
-  },
-  toolbar: {
-    width:'100%',
-    ['@media (min-width:780px)']: { // eslint-disable-line no-useless-computed-key
-      width: '66.67%',
-    }
   }
 };
 
