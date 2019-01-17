@@ -29,6 +29,7 @@ export const errorChangeRegistration = ({ data }) => {
 	}
 }
 
+
 // export const clearViewRegistration = () => {
 // 	return {
 // 		type: CLEAR_VIEWREGISTRATION

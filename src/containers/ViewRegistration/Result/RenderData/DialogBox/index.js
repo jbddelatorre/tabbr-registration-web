@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import isEmpty from '../../../../../validation/isEmpty'
-import { requestChangeRegistration } from '../../../../../actions/viewregistration/viewregistrationChangeAction'
+import { requestChangeRegistration, logChangedField } from '../../../../../actions/viewregistration/viewregistrationChangeAction'
 
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -119,7 +119,7 @@ class FormDialog extends React.Component {
 
 const mapStateToProps = (state) => ({
   email: state.viewregistration.data.email,
-  registration_code: state.viewregistration.data.registration_code
+  registration_code: state.viewregistration.data.registration_code,
 })
 
 export default connect(mapStateToProps, { requestChangeRegistration })(withStyles(styles)(FormDialog))

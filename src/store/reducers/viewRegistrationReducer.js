@@ -6,9 +6,11 @@ import {
 	CLEAR_VIEWREGISTRATION
 } from '../../actions/viewregistration';
 
+import { FETCH_CHANGEREGISTRATION } from '../../actions/viewregistration/viewregistrationChangeAction'
 
 const isFetching = (state = false, action) => {
 	switch(action.type) {
+		case FETCH_CHANGEREGISTRATION:
 		case FETCH_VIEWREGISTRATION:
 			return true
 		case SET_VIEWREGISTRATION:
@@ -53,8 +55,28 @@ const error = (state = {}, action) => {
 	}
 }
 
+const changedField = (state = "", action) => {
+	switch(action.type) {
+		case FETCH_CHANGEREGISTRATION:
+			return action.payload.field
+		default:
+			return state
+	}
+}
+
+const didRequestChange = (state = false, action) => {
+	switch(action.type) {
+		case FETCH_CHANGEREGISTRATION:
+			return true
+		default:
+			return state
+	}
+}
+
 export default combineReducers({
 	isFetching,
 	data,
-	error
+	error,
+	changedField,
+	didRequestChange
 })

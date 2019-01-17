@@ -10,20 +10,20 @@ export default ({ type, message }) => {
 
 	switch(type) {
 		case 'success':
-			icon.push(<CheckCircle style={{color: "#10b710"}} />)
+			icon.push(<CheckCircle key={type} style={{color: "#10b710"}} />)
 			break
 		case 'error':
-			icon.push(<ErrorCircle style={{color: "#ff0000"}} />)
+			icon.push(<ErrorCircle key={type} style={{color: "#ff0000"}} />)
 			break
 		case 'loading':
-			icon.push(<CircularProgress color="secondary" size={18}/>)
+			icon.push(<CircularProgress key={type} color="secondary" size={18}/>)
 			break
 		default: 
 			return icon;
 	}
 
 	return (
-		<div style={{display:'flex'}}>
+		<div key={type} style={{display:'flex'}}>
 			{icon}
 			<Typography paragraph variant="body2" gutterBottom align="center" style={{marginLeft: '16px'}}>
 				{message}

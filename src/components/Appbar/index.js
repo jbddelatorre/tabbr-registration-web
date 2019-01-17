@@ -67,7 +67,7 @@ class ButtonAppBar extends Component {
           </ResponsiveToolbar>
           
         </AppBar>
-        { this.props.isLoading ? <LinearProgress variant="query" color="secondary" /> : <LinearProgress variant="query" color="white" /> }
+        { this.props.isLoading ? <LinearProgress variant="query" color="secondary" /> : <div style={{minHeight:'4px'}}/> }
       </Fragment>
     );
   }
@@ -82,3 +82,4 @@ const mapStateToProps = (state) => ({
 })
 
 export default connect(mapStateToProps)(withStyles(styles)(ButtonAppBar));
+

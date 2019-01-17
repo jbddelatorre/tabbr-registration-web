@@ -1,11 +1,12 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { transform_field } from './transform_field';
+import isEmpty from '../../../../validation/isEmpty'
 
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
-import ChangeButton from './ChangeButton'
+import ChangeMessage from './ChangeMessage'
 import DialogBox from './DialogBox'
 
 const styles = theme => ({
@@ -26,7 +27,7 @@ class RenderData extends Component {
 	}
 
 	render() {
-		const {  data, classes, status, message } = this.props
+		const {  data, classes, status, message, isFetching, changedField, error, didRequestChange } = this.props
 		const fields = [];
 
 		for(let field of Object.keys(data)) {
@@ -52,7 +53,16 @@ class RenderData extends Component {
 						/>
 					</Grid>
 					<Grid container item xs={3} align="left">
-						<ChangeButton type={status} message={message}/>
+						{ 
+							isFetching && field === changedField ? 
+								<ChangeMessage type={'loading'} /> 
+								: didRequestChange && field === changedField ? 
+									isEmpty(error) ? 
+										<ChangeMessage key={field} type={'success'} message={"Successfully Changed!"}/> 
+										: <ChangeMessage key={field} type={'error'} message={"Something went wrong."} /> 
+									: null
+						}
+
 					</Grid>
 				</Grid>
 			)
@@ -66,6 +76,12 @@ class RenderData extends Component {
 	}
 }
 
+const mapStateToProps = state => ({
+	isFetching: state.viewregistration.isFetching,
+	changedField: state.viewregistration.changedField,
+	error: state.viewregistration.error,
+	didRequestChange: state.viewregistration.didRequestChange
+})
 
-export default connect()(withStyles(styles)(RenderData))
+export default connect(mapStateToProps)(withStyles(styles)(RenderData))
 
