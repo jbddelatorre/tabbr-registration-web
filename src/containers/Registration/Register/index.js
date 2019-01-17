@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 
 import { registerRepresentative } from '../../../actions/registration';
 
+import Container from '../../../components/Container'
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
@@ -82,137 +83,132 @@ class Register extends Component {
 
 	render() {
 		const { classes } = this.props;
-
 		return (
-			<div className={classes.root}>
-				<Grid container spacing={32} justify="center">
-					<Grid item xs={12} lg={8}>
-						<Grid container justify="center">
-							<Grid item xs={12}>
-								<Typography variant="h2" gutterBottom>
-						        	Tournament Name
-						    	</Typography>
-							</Grid>
-							<Grid item xs={11}>
-								<Typography variant="subtitle1" gutterBottom>
-						        	Informative text
-						    	</Typography>
-							</Grid>
-						</Grid>
-						<Grid container spacing={16}>
-							<Grid item xs={12}>
-								<TextField
-								  error = {this.state.error.institution}
-								  required
-						          label="Institution"
-						          className={classes.textField}
-						          value={this.state.institution}
-						          onChange={this.handleChange('institution')}
-						          margin="normal"
-						          variant="outlined"
-						          helperText="Some important text"
-						          fullWidth
-						        />
-							</Grid>
-						</Grid>
-						<Grid container>
-							<Grid item xs={12}>
-								<TextField
-								  error = {this.state.error.representative}
-								  required
-						          label="Institutional Representative"
-						          className={classes.textField}
-						          value={this.state.representative}
-						          onChange={this.handleChange('representative')}
-						          margin="normal"
-						          variant="outlined"
-						          fullWidth
-						        />
-							</Grid>
-						</Grid>
-						<Grid container>
-							<Grid item xs={12}>
-								<TextField
-								  error = {this.state.error.email}
-								  required
-						          label="Email Address"
-						          className={classes.textField}
-						          value={this.state.email}
-						          onChange={this.handleChange('email')}
-						          margin="normal"
-						          variant="outlined"
-						          fullWidth
-						        />
-							</Grid>
-						</Grid>
-						<Grid container>
-							<Grid item xs={12}>
-								<TextField
-								  error = {this.state.error.contact}
-								  required
-						          label="Contact Number"
-						          className={classes.textField}
-						          value={this.state.contact}
-						          onChange={this.handleChange('contact')}
-						          margin="normal"
-						          variant="outlined"
-						          fullWidth
-						        />
-							</Grid>
-						</Grid>
-						<Grid container spacing={8}>
-							<Grid item xs={6}>
-								<TextField
-								  error = {this.state.error.num_teams}
-								  required
-						          label="Number of Teams"
-						          className={classes.textField}
-						          value={this.state.num_teams}
-						          onChange={this.handleChangeNum('num_teams')}
-						          margin="normal"
-						          variant="outlined"
-						          fullWidth
-						        />
-							</Grid>
-							<Grid item xs={6}>
-								<TextField
-								  error = {this.state.error.num_adj}
-								  required
-						          label="Number of Adjudicators"
-						          className={classes.textField}
-						          value={this.state.num_adj}
-						          onChange={this.handleChangeNum('num_adj')}
-						          margin="normal"
-						          variant="outlined"
-						          fullWidth
-						        />
-							</Grid>
-							<Grid item xs={6}>
-								<TextField
-								  error = {this.state.error.num_obs}
-								  required
-						          label="Number of Observers"
-						          className={classes.textField}
-						          value={this.state.num_obs}
-						          onChange={this.handleChangeNum('num_obs')}
-						          margin="normal"
-						          variant="outlined"
-						          fullWidth
-						        />
-							</Grid>
-						</Grid>
-						<Grid container justify="center">
-							<Button 
-								variant="contained" 
-								className={classes.button}
-								color="primary"
-								onClick={this.handleSubmit}>
-	        					Submit Registration
-	     					</Button>
-						</Grid>
+			<Container>
+				<Grid container justify="center">
+					<Grid item xs={12}>
+						<Typography variant="h2" gutterBottom>
+				        	Tournament Name
+				    	</Typography>
+					</Grid>
+					<Grid item xs={11}>
+						<Typography variant="subtitle1" gutterBottom>
+				        	Informative text
+				    	</Typography>
 					</Grid>
 				</Grid>
-			</div>
+				<Grid container spacing={16}>
+					<Grid item xs={12}>
+						<TextField
+						  error = {this.state.error.institution}
+						  required
+				          label="Institution"
+				          className={classes.textField}
+				          value={this.state.institution}
+				          onChange={this.handleChange('institution')}
+				          margin="normal"
+				          variant="outlined"
+				          helperText="Some important text"
+				          fullWidth
+				        />
+					</Grid>
+				</Grid>
+				<Grid container>
+					<Grid item xs={12}>
+						<TextField
+						  error = {this.state.error.representative}
+						  required
+				          label="Institutional Representative"
+				          className={classes.textField}
+				          value={this.state.representative}
+				          onChange={this.handleChange('representative')}
+				          margin="normal"
+				          variant="outlined"
+				          fullWidth
+				        />
+					</Grid>
+				</Grid>
+				<Grid container>
+					<Grid item xs={12}>
+						<TextField
+						  error = {this.state.error.email}
+						  required
+				          label="Email Address"
+				          className={classes.textField}
+				          value={this.state.email}
+				          onChange={this.handleChange('email')}
+				          margin="normal"
+				          variant="outlined"
+				          fullWidth
+				        />
+					</Grid>
+				</Grid>
+				<Grid container>
+					<Grid item xs={12}>
+						<TextField
+						  error = {this.state.error.contact}
+						  required
+				          label="Contact Number"
+				          className={classes.textField}
+				          value={this.state.contact}
+				          onChange={this.handleChange('contact')}
+				          margin="normal"
+				          variant="outlined"
+				          fullWidth
+				        />
+					</Grid>
+				</Grid>
+				<Grid container spacing={8}>
+					<Grid item xs={6}>
+						<TextField
+						  error = {this.state.error.num_teams}
+						  required
+				          label="Number of Teams"
+				          className={classes.textField}
+				          value={this.state.num_teams}
+				          onChange={this.handleChangeNum('num_teams')}
+				          margin="normal"
+				          variant="outlined"
+				          fullWidth
+				        />
+					</Grid>
+					<Grid item xs={6}>
+						<TextField
+						  error = {this.state.error.num_adj}
+						  required
+				          label="Number of Adjudicators"
+				          className={classes.textField}
+				          value={this.state.num_adj}
+				          onChange={this.handleChangeNum('num_adj')}
+				          margin="normal"
+				          variant="outlined"
+				          fullWidth
+				        />
+					</Grid>
+					<Grid item xs={6}>
+						<TextField
+						  error = {this.state.error.num_obs}
+						  required
+				          label="Number of Observers"
+				          className={classes.textField}
+				          value={this.state.num_obs}
+				          onChange={this.handleChangeNum('num_obs')}
+				          margin="normal"
+				          variant="outlined"
+				          fullWidth
+				        />
+					</Grid>
+				</Grid>
+				<Grid container justify="center">
+					<Button 
+						variant="contained" 
+						className={classes.button}
+						color="primary"
+						onClick={this.handleSubmit}>
+    					Submit Registration
+ 					</Button>
+				</Grid>
+			</Container>
 		);
 	}
 }

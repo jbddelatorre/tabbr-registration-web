@@ -3,6 +3,7 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
+import Container from '../../../components/Container'
 import { connect } from 'react-redux'
 import { clearViewRegistration } from '../../../actions/viewregistration' 
 import { withStyles } from '@material-ui/core/styles';
@@ -33,34 +34,30 @@ const styles = theme => ({
 export default connect(null, { clearViewRegistration })(withStyles(styles)((props) => {
 	const { data, classes } = props;
 	return (
-		<div className={classes.root}>
-			<Grid container spacing={32} justify="center">
-				<Grid container item xs={12} lg={8} justify="center">
-					<Grid item xs={12}>
-						<Typography variant="h4" gutterBottom>
-				        	{"Tournament Name"}
-				    	</Typography>
-					</Grid>
-					<Grid item xs={11} className={classes.spacing}>
-						<Typography variant="body1" gutterBottom>
-				        	You are currently registered in this tournament.
-				    	</Typography>
-					</Grid>
-					
-					<Fields data={data} status={null} message={null} />
-
-					<Grid item container xs={12} justify="center" className={classes.foot}>
-						<Typography
-							className={classes.link}
-							onClick={props.clearViewRegistration}
-							color="primary"
-							variant="body1"
-						>
-							Find another registration
-						</Typography>
-					</Grid>
-				</Grid>
+		<Container>
+			<Grid item xs={12}>
+				<Typography variant="h4" gutterBottom>
+		        	{"Tournament Name"}
+		    	</Typography>
 			</Grid>
-		</div>
+			<Grid item xs={11} className={classes.spacing}>
+				<Typography variant="body1" gutterBottom>
+		        	You are currently registered in this tournament.
+		    	</Typography>
+			</Grid>
+			
+			<Fields />
+
+			<Grid item container xs={12} justify="center" className={classes.foot}>
+				<Typography
+					className={classes.link}
+					onClick={props.clearViewRegistration}
+					color="primary"
+					variant="body1"
+				>
+					Find another registration
+				</Typography>
+			</Grid>
+		</Container>
 	)
 }));

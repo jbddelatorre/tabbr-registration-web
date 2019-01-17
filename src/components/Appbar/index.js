@@ -46,6 +46,13 @@ class ButtonAppBar extends Component {
               <MediaQuery query="(min-device-width: 700px)">
                 <Button
                   component={Link}
+                  to="/signup"
+                  color="inherit" 
+                  className={classes.appbarButton}>
+                    Sign Up as Host
+                </Button>
+                <Button
+                  component={Link}
                   to="/register"
                   color="inherit" 
                   className={classes.appbarButton}>

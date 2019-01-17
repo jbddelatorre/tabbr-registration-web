@@ -6,6 +6,7 @@ import Validator from 'validator';
 
 import { requestViewRegistration } from '../../../actions/viewregistration'
 
+import Container from '../../../components/Container';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
@@ -79,69 +80,64 @@ class ViewRegistration extends Component {
 		const { registration_code, email, error } = this.state
 
 		return (
-			<div className={classes.root}>
-				<Grid container justify="center">
-					<Grid container item xs={12} md={10} lg={8} justify="center">
-						<Grid container item xs = {12} md={4} lg={4} direction="column" justify="center">
-							<Typography variant="subtitle1" gutterBottom>
-						        Registration Code
-						    </Typography>
-						</Grid>		
-						<Grid item xs={12} md={8}>
-							<TextField
-							  required
-							  error={!!error.registration_code}
-					          label="Registration Code"
-					          value={registration_code}
-					          className={classes.textField}
-					          helperText={error.registration_code ? error.registration_code : "Enter Registration Code"}
-					          margin="normal"
-					          variant="outlined"
-					          fullWidth
-					          onChange= { this.handleChange('registration_code') }
-					        />
-						</Grid>
-						<Grid container item xs = {12} md={4} lg={4} direction="column" justify="center">
-							<Typography variant="subtitle1" gutterBottom>
-						        Email
-						    </Typography>
-						</Grid>		
-						<Grid item xs={12} md={8}>
-							<TextField
-							  required
-							  error={!!error.email}
-					          label="Email"
-					          value={email}
-					          className={classes.textField}
-					          helperText={error.email ? error.email: "Enter Email Address"}
-					          margin="normal"
-					          variant="outlined"
-					          fullWidth
-					          onChange= { this.handleChange('email') }
-					        />
-						</Grid>
-					</Grid>
-					
-					{viewregistration_error.viewregistration ? 
-					<Grid container item xs={12} justify="center" className={classes.message}>
-						<Typography variant="subtitle1" color="secondary" gutterBottom>
-						        Registration not found.
-						</Typography>
-					</Grid> : null
-					}
-
-					<Grid container item xs={12} justify="center">
-						<Button
-							className={classes.button}
-							variant="contained"
-							onClick={this.handleSubmit}
-							color="primary"
-						>
-						Find Registration
-						</Button>
-					</Grid>
+			<Container>
+				<Grid container item xs = {12} md={4} lg={4} direction="column" justify="center">
+					<Typography variant="subtitle1" gutterBottom>
+				        Registration Code
+				    </Typography>
+				</Grid>		
+				<Grid item xs={12} md={8}>
+					<TextField
+					  required
+					  error={!!error.registration_code}
+			          label="Registration Code"
+			          value={registration_code}
+			          className={classes.textField}
+			          helperText={error.registration_code ? error.registration_code : "Enter Registration Code"}
+			          margin="normal"
+			          variant="outlined"
+			          fullWidth
+			          onChange= { this.handleChange('registration_code') }
+			        />
 				</Grid>
-			</div>
+				<Grid container item xs = {12} md={4} lg={4} direction="column" justify="center">
+					<Typography variant="subtitle1" gutterBottom>
+				        Email
+				    </Typography>
+				</Grid>		
+				<Grid item xs={12} md={8}>
+					<TextField
+					  required
+					  error={!!error.email}
+			          label="Email"
+			          value={email}
+			          className={classes.textField}
+			          helperText={error.email ? error.email: "Enter Email Address"}
+			          margin="normal"
+			          variant="outlined"
+			          fullWidth
+			          onChange= { this.handleChange('email') }
+			        />
+				</Grid>
+				{viewregistration_error.viewregistration ? 
+				<Grid container item xs={12} justify="center" className={classes.message}>
+					<Typography variant="subtitle1" color="secondary" gutterBottom>
+					        Registration not found.
+					</Typography>
+				</Grid> : null
+				}
+
+				<Grid container item xs={12} justify="center">
+					<Button
+						className={classes.button}
+						variant="contained"
+						onClick={this.handleSubmit}
+						color="primary"
+					>
+					Find Registration
+					</Button>
+				</Grid>
+			</Container>
 		);
 	}
 }

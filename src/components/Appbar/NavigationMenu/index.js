@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 
+import { Link } from 'react-router-dom';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 
@@ -29,9 +30,26 @@ export default class NavigationMenu extends Component {
 		          open={Boolean(anchorEl)}
 		          onClose={this.handleClose}
 		        >
-		          <MenuItem onClick={this.handleClose}>Register</MenuItem>
-		          <MenuItem onClick={this.handleClose}>Search Registration</MenuItem>
-		          <MenuItem onClick={this.handleClose}>Login</MenuItem>
+		          <MenuItem 
+		          	onClick={this.handleClose}
+		          	component={Link}
+                  	to="/register"
+		          	>
+		          	Register
+		          </MenuItem>
+		          <MenuItem 
+		          	onClick={this.handleClose}
+		          	component={Link}
+                  	to="/view"
+		          	>
+		          	Search Registration
+		          </MenuItem>
+		          <MenuItem 
+		          	onClick={this.handleClose}
+		          	component={Link}
+                  	to="/signup">
+		          	Sign Up
+		          </MenuItem>
 		        </Menu>
 			</Fragment>
 		);

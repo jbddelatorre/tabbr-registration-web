@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { transform_field } from './transform_field';
 import isEmpty from '../../../../validation/isEmpty'
 
+import Input from '@material-ui/core/Input';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
@@ -71,12 +72,16 @@ class RenderData extends Component {
 		return (
 			<Fragment>
 				{fields}
+				<Grid container justify="center">
+					<Input type="file" />
+				</Grid>
 			</Fragment>
 		)
 	}
 }
 
 const mapStateToProps = state => ({
+	data: state.viewregistration.data,
 	isFetching: state.viewregistration.isFetching,
 	changedField: state.viewregistration.changedField,
 	error: state.viewregistration.error,
