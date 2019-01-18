@@ -28,7 +28,7 @@ class RenderData extends Component {
 	}
 
 	render() {
-		const {  data, classes, status, message, isFetching, changedField, error, didRequestChange } = this.props
+		const {  data, isFetching, changedField, error, didRequestChange } = this.props
 		const fields = [];
 
 		for(let field of Object.keys(data)) {

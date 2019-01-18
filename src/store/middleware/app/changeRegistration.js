@@ -1,8 +1,6 @@
 import { 
 	CHANGEREGISTRATION, 
 	FETCH_CHANGEREGISTRATION,
-	successChangeRegistration,
-	errorChangeRegistration
  } from '../../../actions/viewregistration/viewregistrationChangeAction'
 
  import { 

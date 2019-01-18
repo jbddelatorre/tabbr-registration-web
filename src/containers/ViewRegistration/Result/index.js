@@ -32,7 +32,7 @@ const styles = theme => ({
 });
 
 export default connect(null, { clearViewRegistration })(withStyles(styles)((props) => {
-	const { data, classes } = props;
+	const { classes } = props;
 	return (
 		<Container>
 			<Grid item xs={12}>
