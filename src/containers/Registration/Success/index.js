@@ -45,7 +45,7 @@ export default withStyles(styles)((props) => {
 				<Grid container justify="center" className={classes.spacing}>
 					<Grid item xs={12} md={4}>
 						<Typography variant="body1" gutterBottom align="center">
-				        	Institution Name:
+				        	Institution Name
 				    	</Typography>
 				    	<Typography variant="h5" gutterBottom align="center">
 				        	{ data.institution }
@@ -53,7 +53,7 @@ export default withStyles(styles)((props) => {
 					</Grid>
 					<Grid item xs={12} md={4}>
 						<Typography variant="body1" gutterBottom align="center">
-				        	Institution Representative:
+				        	Institution Representative
 				    	</Typography>
 				    	<Typography variant="h5" gutterBottom align="center">
 				        	{ data.representative }
@@ -63,14 +63,14 @@ export default withStyles(styles)((props) => {
 				
 
 				<Typography variant="body1" gutterBottom align="center">
-		        	Your institution registration code:
+		        	Your institution registration code
 		    	</Typography>
 		    	<Typography variant="h4" gutterBottom align="center">
 		        	{ data.registration_code }
 		    	</Typography>
 
 		    	<Typography variant="body1" gutterBottom align="center">
-		        	Registered Email Address:
+		        	Registered Email Address
 		    	</Typography>
 		    	<Typography variant="h6" gutterBottom align="center">
 		        	{ data.email }

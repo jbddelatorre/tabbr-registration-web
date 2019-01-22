@@ -1,7 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import Registration from './Registration';
 import ViewRegistration from './ViewRegistration';
-import Signup from './Signup';
+import Signup from './Account/Signup';
+import Login from './Account/Login';
 
 import { Switch, Route } from 'react-router-dom';
 
@@ -20,6 +21,9 @@ class Container extends Component {
 					<Route 
 						path='/signup' 
 						component={Signup}/>
+					<Route 
+						path='/login' 
+						component={Login}/>
 					<Route 
 						path='/register'
 						component={Registration} />

@@ -1,21 +1,19 @@
 import React, { Component } from 'react';
 import Validator from 'validator';
-import isEmpty from '../../validation/isEmpty';
+import isEmpty from '../../../validation/isEmpty';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { requestSignup } from '../../../actions/account/signupActions'
 
-import Container from '../../components/Container'
+import Container from '../../../components/Container'
 import { withStyles } from '@material-ui/core/styles';
-
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-
 import Grid from '@material-ui/core/Grid';
-
 import Paper from '@material-ui/core/Paper';
 
-import Tooltip from '@material-ui/core/Tooltip';
+
 
 const styles = theme => ({
   root: {
@@ -23,7 +21,8 @@ const styles = theme => ({
     paddingTop: theme.spacing.unit * 2,
     paddingBottom: theme.spacing.unit * 2,
     minWidth:'250px',
-    width: '45%'
+    width: '45%',
+    borderRadius: '10px'
   },
   button: {
   	minWidth: '200px',
@@ -48,7 +47,8 @@ class Signup extends Component {
 				contact:"",
 				password:"",
 				confirmpassword:"",
-			}
+			},
+			
 		}
 	}
 
@@ -82,9 +82,13 @@ class Signup extends Component {
 			}
 		}
 
-		await this.setState({ error })
-		
-		console.log(this.state)
+		this.setState({ error })
+
+		if(valid) {
+			await this.props.requestSignup(state)
+			this.props.history.push('/login')
+		}
+
 	}
 
 	render() {
@@ -102,7 +106,10 @@ class Signup extends Component {
 				          Some information
 				        </Typography>
 					</Grid>
+					<form>
 			        <TextField
+			        	InputLabelProps={{ shrink: true }}
+			        	  autoComplete={"name"}
 			        	  error={!!error.fullname}
 						  required
 				          label="Full Name"
@@ -115,6 +122,7 @@ class Signup extends Component {
 				          helperText={error.fullname}
 				        />
 				    <TextField
+				    	InputLabelProps={{ shrink: true }}
 				    	  error={!!error.institution}
 						  required
 				          label="Institution"
@@ -127,6 +135,8 @@ class Signup extends Component {
 				          helperText={error.institution}
 				        />
 				    <TextField
+				    	InputLabelProps={{ shrink: true }}
+				    	  autoComplete={"email"}
 				    	  error={!!error.email}
 						  required
 				          label="Email"
@@ -139,6 +149,8 @@ class Signup extends Component {
 				          helperText={error.email}
 				        />
 				    <TextField
+				    	  InputLabelProps={{ shrink: true }}
+				     	  autoComplete={"tel"}
 				    	  error={!!error.contact}
 						  required
 				          label="Mobile Number / Contact Details"
@@ -151,6 +163,7 @@ class Signup extends Component {
 				          helperText={error.contact}
 				        />   
 				    <TextField
+				    InputLabelProps={{ shrink: true }}
 				    	  error={!!error.password}
 				    	  type="password"
 						  required
@@ -164,6 +177,7 @@ class Signup extends Component {
 				          helperText={error.password}
 				        />
 				    <TextField
+				    InputLabelProps={{ shrink: true }}
 				    	  error={!!error.confirmpassword}
 				    	  type="password"
 						  required
@@ -182,13 +196,14 @@ class Signup extends Component {
 					    	Sign Up
 					    </Button>
 				    </Grid>
+				    </form>
 				</Paper>
 			</Container>
 		);
 	}
 }
 
-export default connect(null)(withStyles(styles)(Signup))
+export default connect(null, { requestSignup })(withStyles(styles)(Signup))
 
 
 

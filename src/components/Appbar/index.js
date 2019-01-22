@@ -12,6 +12,8 @@ import ResponsiveToolbar from '../Container/Toolbar'
 import NavigationMenu from './NavigationMenu'
 import LinearProgress from '@material-ui/core/LinearProgress';
 
+import Snackbar from '../Notification'
+
 const styles = {
   root: {
     flexGrow: 1,
@@ -44,6 +46,13 @@ class ButtonAppBar extends Component {
               </Typography>
 
               <MediaQuery query="(min-device-width: 700px)">
+                <Button
+                  component={Link}
+                  to="/login"
+                  color="inherit" 
+                  className={classes.appbarButton}>
+                    Sign In
+                </Button>
                 <Button
                   component={Link}
                   to="/signup"

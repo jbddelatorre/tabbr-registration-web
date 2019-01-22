@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 // import Validator from 'validator';
 import isEmpty from '../../validation/isEmpty';
 import PropTypes from 'prop-types';
@@ -12,7 +12,6 @@ class Registration extends Component {
 
 	render() {
 		const { data } = this.props;
-
 		return (
 			isEmpty(data) ? <Register /> : <Success data = {data} />
 		)
