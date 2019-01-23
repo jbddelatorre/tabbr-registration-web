@@ -67,15 +67,18 @@ class Signup extends Component {
 		if(!Validator.isEmail(state.email)) {
 			valid = false
 			error.email = "This is not a valid email"
+			this.setState({ error })
+		} else {
+			this.props.requestLogin(state)
 		}
-			
-		await this.setState({ error })
-		
-		this.props.requestLogin(state)
-		console.log(state)
 	}
 
+
 	componentDidMount = () => {
+		if(!isEmpty(this.props.data) || sessionStorage.jwtToken) {
+			this.props.history.push('/dashboard')
+		} 
+
 		const { data, errors } = this.props;
 
 		if(!isEmpty(data) || !isEmpty(errors)) {

@@ -88,7 +88,6 @@ class Signup extends Component {
 			await this.props.requestSignup(state)
 			this.props.history.push('/login')
 		}
-
 	}
 
 	render() {

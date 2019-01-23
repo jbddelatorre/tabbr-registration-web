@@ -16,7 +16,7 @@ export const loginMiddleware = ({dispatch}) => next => action => {
 
 	switch(action.type) {
 		case FETCH_LOGIN:
-			dispatch(apiRequest(action.payload, 'post', LOGIN, '/api/login'))
+			dispatch(apiRequest(action.payload, 'post', LOGIN, '/api/account/login'))
 			break
 		case `${LOGIN} ${API_SUCCESS}`:
 			dispatch(successLogin(action.payload))

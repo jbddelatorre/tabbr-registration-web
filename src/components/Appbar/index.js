@@ -46,34 +46,57 @@ class ButtonAppBar extends Component {
               </Typography>
 
               <MediaQuery query="(min-device-width: 700px)">
-                <Button
-                  component={Link}
-                  to="/login"
-                  color="inherit" 
-                  className={classes.appbarButton}>
-                    Sign In
-                </Button>
-                <Button
-                  component={Link}
-                  to="/signup"
-                  color="inherit" 
-                  className={classes.appbarButton}>
-                    Sign Up as Host
-                </Button>
-                <Button
-                  component={Link}
-                  to="/register"
-                  color="inherit" 
-                  className={classes.appbarButton}>
-                    Register Team
-                </Button>
-                <Button
-                  component={Link}
-                  to="/view" 
-                  color="inherit" 
-                  className={classes.appbarButton}>
-                    View Registration
-                </Button>
+                {
+                  sessionStorage.jwtToken ? 
+                  <Fragment>
+                    <Button
+                    component={Link}
+                    to="/dashboard"
+                    color="inherit" 
+                    className={classes.appbarButton}>
+                      Dashboard
+                    </Button>
+                    <Button
+                    component={Link}
+                    to="/dashboard"
+                    color="inherit" 
+                    className={classes.appbarButton}>
+                      Logout
+                    </Button>
+                  </Fragment>
+                  :
+                  <Fragment>
+                    <Button
+                    component={Link}
+                    to="/login"
+                    color="inherit" 
+                    className={classes.appbarButton}>
+                      Sign In
+                    </Button>
+                    <Button
+                    component={Link}
+                    to="/signup"
+                    color="inherit" 
+                    className={classes.appbarButton}>
+                      Sign Up as Host
+                    </Button>
+                     <Button
+                      component={Link}
+                      to="/register"
+                      color="inherit" 
+                      className={classes.appbarButton}>
+                        Register Team
+                    </Button>
+                    <Button
+                      component={Link}
+                      to="/view" 
+                      color="inherit" 
+                      className={classes.appbarButton}>
+                        View Registration
+                    </Button>
+                  </Fragment>
+                }
+                
               </MediaQuery>
 
               <MediaQuery query="(max-device-width: 700px)">

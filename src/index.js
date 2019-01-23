@@ -8,11 +8,13 @@ import { apiBaseUrl } from './config';
 
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
-import { BrowserRouter as Router } from 'react-router-dom';
+import { Router } from 'react-router-dom';
 
 import blue from '@material-ui/core/colors/blue';
 
 import * as serviceWorker from './serviceWorker';
+
+import history from './utils/history'
 
 const theme = createMuiTheme({
 	palette: {
@@ -30,7 +32,7 @@ axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded
 ReactDOM.render(
 	<MuiThemeProvider theme={theme}>
 		<Provider store={store}>
-				<Router>
+				<Router history={history}>
 					<Container />
 				</Router>	
 		</Provider>

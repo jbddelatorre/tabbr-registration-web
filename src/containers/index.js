@@ -3,6 +3,7 @@ import Registration from './Registration';
 import ViewRegistration from './ViewRegistration';
 import Signup from './Account/Signup';
 import Login from './Account/Login';
+import Dashboard from './Dashboard';
 
 import { Switch, Route } from 'react-router-dom';
 
@@ -24,6 +25,9 @@ class Container extends Component {
 					<Route 
 						path='/login' 
 						component={Login}/>
+					<Route 
+						path='/dashboard' 
+						component={Dashboard}/>
 					<Route 
 						path='/register'
 						component={Registration} />

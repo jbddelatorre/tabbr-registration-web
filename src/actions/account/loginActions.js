@@ -1,3 +1,8 @@
+import setAuthToken from '../../utils/setAuthToken'
+import jwt_decode from 'jwt-decode';
+
+import history from '../../utils/history'
+
 export const LOGIN = '[LOGIN]'
 
 export const FETCH_LOGIN = `${LOGIN} Fetch`
@@ -12,9 +17,16 @@ export const requestLogin = userData => {
 }
 
 export const successLogin = ({ data }) => {
+	const token = data.data.token
+	sessionStorage.setItem('jwtToken', token);
+	setAuthToken(token)
+	const decoded = jwt_decode(token)
+
+	history.push('/dashboard')
+
 	return ({
 		type: SUCCESS_LOGIN,
-		payload: data
+		payload: decoded
 	})
 }
 
