@@ -8,7 +8,7 @@ export default (props) => {
 	// 	paddingLeft: '36px',
 	// 	paddingRight: '36px',
 	// }
-	const style = {minHeight:'85.5vh', padding: '32px', ...props.style }
+	const style = {minHeight:'82.5vh', padding: '32px', ...props.style }
 
 	return (
 		<div className={props.className} style={style}>

@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux'
+import { requestTournamentNew } from '../../../actions/tournaments/tournamentActions'
 import { withStyles } from '@material-ui/core/styles';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
@@ -123,8 +125,13 @@ class VerticalLinearStepper extends React.Component {
   };
 
   handleSubmit = () => {
-    const { values } = this.state
+    let { values } = this.state
+    
+    values = { ...values, user:this.props.user }
+
     console.log(values)
+
+    this.props.requestTournamentNew(values)
   }
 
   render() {
@@ -185,8 +192,12 @@ class VerticalLinearStepper extends React.Component {
   }
 }
 
+const mapStateToProps = state => ({
+  user:state.account.login.data.id
+})
+
 VerticalLinearStepper.propTypes = {
   classes: PropTypes.object,
 };
 
-export default withStyles(styles)(VerticalLinearStepper);
+export default connect(mapStateToProps, { requestTournamentNew })(withStyles(styles)(VerticalLinearStepper));

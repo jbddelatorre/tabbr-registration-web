@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux'
 import { 
-	FETCH_LOGIN,
+	FETCH_USER_TOURNAMENTS,
 	// CLEAR_SIGNUP,
-	SUCCESS_LOGIN,
-	ERROR_LOGIN
-} from '../../../actions/account/loginActions';
+	SUCCESS_USER_TOURNAMENTS,
+	ERROR_USER_TOURNAMENTS
+} from '../../../actions/account/fetchTournamentsActions';
 
 import { 
 	LOGOUT
@@ -12,10 +12,10 @@ import {
 
 const isFetching = (state = false, action) => {
 	switch(action.type) {
-		case FETCH_LOGIN:
+		case FETCH_USER_TOURNAMENTS:
 			return true
-		case SUCCESS_LOGIN:
-		case ERROR_LOGIN:
+		case SUCCESS_USER_TOURNAMENTS:
+		case ERROR_USER_TOURNAMENTS:
 			return false
 		default:
 			return state
@@ -24,8 +24,8 @@ const isFetching = (state = false, action) => {
 
 const data = (state = {}, action) => {
 	switch(action.type) {
-		case SUCCESS_LOGIN:
-			return action.payload
+		case SUCCESS_USER_TOURNAMENTS:
+			return action.payload.data.tournaments
 		case LOGOUT:
 			return {}
 		default:
@@ -37,4 +37,3 @@ export default combineReducers({
 	isFetching,
 	data,
 })
-

@@ -2,7 +2,7 @@ import React, { Fragment, Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-
+import { logoutRequest } from '../../actions/account/logoutActions'
 import MediaQuery from 'react-responsive';
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -28,6 +28,10 @@ const styles = {
 };
 
 class ButtonAppBar extends Component {
+
+  handleLogout = () => {
+    this.props.logoutRequest();
+  }
 
   render() {
     const { classes } = this.props;
@@ -57,8 +61,7 @@ class ButtonAppBar extends Component {
                       Dashboard
                     </Button>
                     <Button
-                    component={Link}
-                    to="/dashboard"
+                    onClick={this.handleLogout}
                     color="inherit" 
                     className={classes.appbarButton}>
                       Logout
@@ -120,5 +123,5 @@ const mapStateToProps = (state) => ({
   isLoading: state.app.isLoading
 })
 
-export default connect(mapStateToProps)(withStyles(styles)(ButtonAppBar));
+export default connect(mapStateToProps, { logoutRequest })(withStyles(styles)(ButtonAppBar));
 

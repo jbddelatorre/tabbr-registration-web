@@ -29,6 +29,7 @@ axios.defaults.baseURL = apiBaseUrl;
 //axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
+
 ReactDOM.render(
 	<MuiThemeProvider theme={theme}>
 		<Provider store={store}>

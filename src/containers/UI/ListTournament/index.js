@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import isEmpty from '../../../../validation/isEmpty'
+import isEmpty from '../../../validation/isEmpty'
 import { convertdate } from './convertdate'
 
 import Grid from '@material-ui/core/Grid';

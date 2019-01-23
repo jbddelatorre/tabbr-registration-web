@@ -11,8 +11,17 @@ export const apiMiddleware = ({ dispatch }) => next => async action => {
 		dispatch(setLoader())
 
 		try {
-			const response = await axios[method](url, action.payload.data)
-			dispatch(apiSuccess(response, entity));
+
+			if(method === 'post') {
+				const response = await axios[method](url, action.payload.data)
+				dispatch(apiSuccess(response, entity));
+			}
+			if(method === 'get') {
+				const response = await axios.get(url)
+				dispatch(apiSuccess(response, entity));
+			}
+
+			
 		}
 		catch(err) {
 			dispatch(apiError(err, entity))

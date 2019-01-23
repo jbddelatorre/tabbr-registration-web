@@ -8,6 +8,7 @@ import Dashboard from './Dashboard';
 import { Switch, Route } from 'react-router-dom';
 
 import Appbar from '../components/Appbar';
+import Footer from '../components/Footer';
 
 class Container extends Component {
 	render() {
@@ -35,6 +36,7 @@ class Container extends Component {
 						path='/view' 
 						component={ViewRegistration}/>
 				</Switch>
+				<Footer />
 			</Fragment>
 		);
 	}
